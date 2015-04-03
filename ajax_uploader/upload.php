@@ -1,15 +1,20 @@
 <?php
-$pid=$_POST['pid'];
 $max_size = 1000; //Max size for Images
 $file_size = 5000000; //Set Max File Size
-$random=random();
-$target_dir = "uploads/$pid/";
+
+$pid=$_POST['pid'];
+if($pid != ""){
+  $target_dir = "uploads/$pid/";
+}else{
+  $target_dir = "uploads/";
+}
 
 //check if folder exists, if not create it
 if (!file_exists($target_dir)) {
     mkdir($target_dir, 0777, true);
 }
 
+$random=random();
 $target_file = $target_dir . $random . "_" . basename($_FILES["fileToUpload"]["name"]);
 
 $uploadOk = 1;

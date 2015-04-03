@@ -20,7 +20,7 @@
 
 				<a>Browse</a>
 				<input type="file" name="fileToUpload" multiple />
-                                <input type="hidden" name="pid" id="pid" value="1234test">
+                                <input type="hidden" name="pid" id="pid">
 			</div>
 
 			<ul>
@@ -44,7 +44,33 @@
 		<!-- Our main JS file -->
 		<script src="assets/js/script.js"></script>
 
+                <script>
 
+
+                  $(document).ready(function(){
+                    if(getUrlParameter('pid')){
+                      var pid = getUrlParameter("pid");
+                      $("#pid").val(getUrlParameter("pid"));
+                    }else{
+                      $("#pid").val("photos");//default folder
+                    }
+                
+
+                    function getUrlParameter(sParam)
+                    {
+                        var sPageURL = window.location.search.substring(1);
+                        var sURLVariables = sPageURL.split('&');
+                        for (var i = 0; i < sURLVariables.length; i++) 
+                        {
+                            var sParameterName = sURLVariables[i].split('=');
+                            if (sParameterName[0] == sParam) 
+                            {
+                                return sParameterName[1];
+                            }
+                        }
+                    }  
+                  }); 
+                </script>
 
 	</body>
 </html>
