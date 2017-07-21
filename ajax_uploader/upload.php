@@ -1,6 +1,6 @@
 <?php
 $max_size = 1000; //Max size for Images
-$file_size = 5000000; //Set Max File Size
+$file_size = 50000000; //Set Max File Size
 
 $pid=$_POST['pid'];
 if($pid != ""){
@@ -56,7 +56,8 @@ if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg
 if ($uploadOk == 0) {
     echo "Sorry, your file was not uploaded.";
 // if everything is ok, try to upload file
-} else {
+}else {
+/*
     //get image height/width and resize
     $fn = $_FILES['fileToUpload']['tmp_name'];
     $size = getimagesize($fn);
@@ -80,14 +81,13 @@ if ($uploadOk == 0) {
     echo "File Uploaded to:$target_file";
     //end resize
 
-
-/*
+*/
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-        echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+         echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+        echo "File Uploaded to:$target_file";
     } else {
         echo "Sorry, there was an error uploading your file.";
     }
-*/
 }
 
 
